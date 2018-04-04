@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import sys
+import sys, os
+import random
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
  
@@ -21,7 +22,9 @@ class App(QWidget):
  
         # Create widget
         label = QLabel(self)
-        pixmap = QPixmap('images/1.jpg')
+        images = os.listdir('images/')
+        image = random.randint(0, len(images)-1)
+        pixmap = QPixmap('images/%s' % images[image])
         label.setPixmap(pixmap)
         self.resize(pixmap.width(),pixmap.height())
  
